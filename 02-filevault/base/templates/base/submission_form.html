@@ -1,0 +1,12 @@
+<h2>Secret file vault</h2>
+
+<form action="{% url 'submission_create' %}" method="post" enctype="multipart/form-data">
+{% csrf_token %}
+{{ form.as_p }}
+<input value="Submit" type="submit">
+</form>
+
+<h3>Stored files</h3>
+{% for submission in submissions %}
+<a href="{% url 'submission_download' submission.pk %}">{{ submission.description }}</a>
+{% endfor %}

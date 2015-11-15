@@ -1,0 +1,29 @@
+<h2>Crack hashes challenge</h2>
+
+<form action="{% url 'user_create' %}" method="post">
+{% csrf_token %}
+{{form}}
+<input value="Submit" type="submit">
+</form>
+
+<h3>MD5 hashes</h3>
+{% for user in users %}
+{{ user.username }} - {{ user.md5 }} </br>
+{% endfor %}
+
+<h3>SHA1 hashes</h3>
+{% for user in users %}
+{{ user.username }} - {{ user.sha1 }} </br>
+{% endfor %}
+
+<h3>SHA2 hashes</h3>
+{% for user in users %}
+{{ user.username }} - {{ user.sha2 }} </br>
+{% endfor %}
+
+<h3>Bcrypt hashes</h3>
+Used salt: '$2b$12$06lamu2xCWRwgTFASwWUx.' </br>
+</br>
+{% for user in users %}
+{{ user.username }} - {{ user.bcrypt }} </br>
+{% endfor %}
